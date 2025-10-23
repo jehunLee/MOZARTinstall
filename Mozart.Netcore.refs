@@ -1,0 +1,72 @@
+﻿<Project>
+  <ItemGroup Condition=" '$(TargetFramework)' == '$(NETCoreTargetFramework)' ">
+    <Reference Include="Mozart.Enterprise">
+      <HintPath>$(MozartNetcoreDir)Mozart.Enterprise.dll</HintPath>
+    </Reference>
+    <Reference Include="Mozart.Data.Access">
+      <HintPath>$(MozartNetcoreDir)Mozart.Data.Access.dll</HintPath>
+    </Reference>
+    <Reference Include="Mozart.Data.Entity">
+      <HintPath>$(MozartNetcoreDir)Mozart.Data.Entity.dll</HintPath>
+    </Reference>
+    <Reference Include="Mozart.DataActions">
+      <HintPath>$(MozartNetcoreDir)Mozart.DataActions.dll</HintPath>
+    </Reference>
+    <Reference Include="Mozart.Distributions">
+      <HintPath>$(MozartNetcoreDir)Mozart.Distributions.dll</HintPath>
+    </Reference>
+	<Reference Include="Mozart.Task.Framework">
+	  <HintPath>$(MozartNetcoreDir)Mozart.Task.Framework.dll</HintPath>
+	</Reference>
+	<Reference Include="Mozart.Task.Execution">
+	  <HintPath>$(MozartNetcoreDir)Mozart.Task.Execution.dll</HintPath>
+	</Reference>	  
+  </ItemGroup>
+  <ItemGroup Condition=" '$(TargetFramework)' == '$(NETCoreTargetFramework)' AND '$(MozartBaseLibrary)' != 'Basic' ">
+	<Reference Include="Mozart.RuleFlow">
+      <HintPath>$(MozartNetcoreDir)Mozart.RuleFlow.dll</HintPath>
+    </Reference>
+    <Reference Include="Mozart.SeePlan">
+      <HintPath>$(MozartNetcoreDir)Mozart.SeePlan.dll</HintPath>
+    </Reference>
+    <Reference Include="Mozart.Simulation.Engine">
+      <HintPath>$(MozartNetcoreDir)Mozart.Simulation.Engine.dll</HintPath>
+    </Reference>
+    <Reference Include="Mozart.Simulation.EnterpriseLibrary">
+      <HintPath>$(MozartNetcoreDir)Mozart.Simulation.EnterpriseLibrary.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup Condition=" '$(TargetFramework)' == '$(NETCoreTargetFramework)' AND '$(MozartBaseLibrary)' == 'SeePlan.SemiFab' ">
+	<Reference Include="Mozart.SeePlan.Semicon">
+	  <HintPath>$(MozartNetcoreDir)Mozart.SeePlan.Semicon.dll</HintPath>
+	</Reference>
+  </ItemGroup>
+  <ItemGroup Condition=" '$(TargetFramework)' == '$(NETCoreTargetFramework)' AND '$(MozartBaseLibrary)' == 'SeePlan.SemiEds' ">
+	<Reference Include="Mozart.SeePlan.SemiEds">
+	  <HintPath>$(MozartNetcoreDir)Mozart.SeePlan.SemiEds.dll</HintPath>
+	</Reference>
+  </ItemGroup>
+  <ItemGroup Condition=" '$(TargetFramework)' == '$(NETCoreTargetFramework)' AND '$(MozartBaseLibrary)' == 'SeePlan.SemiBE' ">
+	<Reference Include="Mozart.SeePlan.SemiBE">
+	  <HintPath>$(MozartNetcoreDir)Mozart.SeePlan.SemiBE.dll</HintPath>
+	</Reference>
+  </ItemGroup>
+  <ItemGroup Condition=" '$(TargetFramework)' == '$(NETCoreTargetFramework)' AND '$(MozartBaseLibrary)' == 'SeePlan.General' ">
+	<Reference Include="Mozart.SeePlan.General">
+	  <HintPath>$(MozartNetcoreDir)Mozart.SeePlan.General.dll</HintPath>
+	</Reference>
+  </ItemGroup>
+  <ItemGroup Condition=" '$(TargetFramework)' == '$(NETCoreTargetFramework)' AND '$(MozartBaseLibrary)' == 'SeePlan.Lcd' ">
+	<Reference Include="Mozart.SeePlan.Lcd">
+	  <HintPath>$(MozartNetcoreDir)Mozart.SeePlan.Lcd.dll</HintPath>
+	</Reference>
+  </ItemGroup>
+  <ItemGroup Condition=" '$(TargetFramework)' == '$(NETCoreTargetFramework)' AND '$(MozartBaseLibrary)' == 'SeePlan' ">
+	<Reference Include="Mozart.SeePlan.BCP">
+	  <HintPath>$(MozartNetcoreDir)Mozart.SeePlan.BCP.dll</HintPath>
+	</Reference>
+	<Reference Include="Mozart.Task.Execution.Modeling">
+	  <HintPath>$(MozartNetcoreDir)Mozart.Task.Execution.Modeling.dll</HintPath>
+	</Reference>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,122 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SourceRevisionId>build$([System.DateTime]::UtcNow.ToString("yyyyMMddHHmmss"))</SourceRevisionId>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NETFXTargetFramework>net480</NETFXTargetFramework>
+    <NETCoreTargetFramework>net6.0</NETCoreTargetFramework>	
+	<TargetFrameworks>$(NETCoreTargetFramework);$(NETFXTargetFramework)</TargetFrameworks>
+	
+    <LangVersion>latest</LangVersion>	
+    <MozartProjectType>Site</MozartProjectType>
+	
+    <MozartBaseLibrary>SeePlan.SemiFab</MozartBaseLibrary>
+    <MozartProjectPrefix>Fab</MozartProjectPrefix>
+    <MozartLicType>LSE</MozartLicType>
+	
+    <MozartBaseLibraryVersion>2024.126.0.147</MozartBaseLibraryVersion>	
+	<MozartStudioDir>C:\Program Files (x86)\VMS\Mozart\v2\Client\Bin\</MozartStudioDir>
+	<MozartNetcoreDir>C:\ProgramData\Mozart\v2\Executions.NetCore\$(MozartBaseLibraryVersion)\</MozartNetcoreDir>
+	<MozartNetfxDir>C:\ProgramData\Mozart\v2\Executions.NetFx\$(MozartBaseLibraryVersion)\</MozartNetfxDir>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <StartAction>Program</StartAction>
+    <StartProgram>$(MozartStudioDir)$(MozartLicType)_Studio.exe</StartProgram>
+  </PropertyGroup>   
+  <ItemGroup>
+    <AssemblyMetadata Include="BaseLib" Value="$(MozartBaseLibrary)" />
+	<AssemblyMetadata Include="BaseLibVer" Value="$(MozartBaseLibraryVersion)" />
+  </ItemGroup>
+  <Import Project="Mozart.Netcore.refs" />
+  <Import Project="Mozart.Netfx.refs" />
+  <ItemGroup>
+	<None Include="Mozart.Netcore.refs" />
+	<None Include="Mozart.Netfx.refs" />
+    <None Remove="Generated\Experiment*\**" />
+    <None Remove="Generated\*.dll" />
+    <None Remove="Generated\*.pdb" />
+    <None Remove="Generated\*.vmodel" />
+    <None Remove="Generated\*.bak" />
+	<None Remove="Generated\*.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="FabSimulator.vxml">
+      <Generator>MozartCode</Generator>
+      <LastGenOutput>FabSimulator.cs</LastGenOutput>
+    </None>
+    <None Update="Main.vxml">
+      <Generator>MozartCode</Generator>
+      <LastGenOutput>Main.cs</LastGenOutput>
+    </None>
+     <None Update="My Objects.vxml">
+      <Generator>MozartCode</Generator>
+      <LastGenOutput>My Objects.cs</LastGenOutput>
+    </None>
+    <None Update="Pegging.vxml">
+      <Generator>MozartCode</Generator>
+      <LastGenOutput>Pegging.cs</LastGenOutput>
+    </None>
+    <None Update="Simulation.vxml">
+      <Generator>MozartCode</Generator>
+      <LastGenOutput>Simulation.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+	<PackageReference Include="linq2db" Version="5.4.1" />
+  </ItemGroup>
+  <ItemGroup>
+	<Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="FabSimulator.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FabSimulator.vxml</DependentUpon>
+    </Compile>
+    <Compile Update="Main.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Main.vxml</DependentUpon>
+    </Compile>
+    <Compile Update="My Objects.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>My Objects.vxml</DependentUpon>
+    </Compile>
+    <Compile Update="Pegging.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Pegging.vxml</DependentUpon>
+    </Compile>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Simulation.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Simulation.vxml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Generated\Data\" />
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="xcopy &quot;$(TargetDir)FabSimulator*&quot; &quot;C:\Program Files (x86)\VMS\Mozart\v2\Client\Bin\&quot; /D /C /V /Y /R" />
+  </Target>
+</Project>

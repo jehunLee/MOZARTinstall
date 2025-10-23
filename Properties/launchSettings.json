@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "FabSTD": {
+      "commandName": "Project",
+      "commandLineArgs": " -model:\"C:\\Users\\JUNYC\\Source\\Workspaces\\Global2\\.NET\\FabSimulator\\Engine\\Generated\\FabSimulator.vmodel\"  -dev  -noauth",
+      "nativeDebugging": true
+    }
+  }
+}
